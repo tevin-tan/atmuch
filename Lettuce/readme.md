@@ -106,5 +106,5 @@ steps.py
 
 测试结果：
 
-![alt text](/Lettuce/icon/result.png "feature")
+![alt text](/Lettuce/icon/result.png "steps")
 
