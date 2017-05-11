@@ -24,7 +24,7 @@ TDD的基本思路就是通过测试来推动整个开发的进行，但测试�
 - Feature(功能）
 - Scenario(情景）
 - Given(给定）
-- And(和)
+z- And(和)
 - When(当)
 - Then(则）
 
@@ -71,5 +71,5 @@ zero.feature
      Then I see the number 2
     
 
-![alt text](/Lettuce/icon/lettuce_feature.png "Title")
+![alt text](/Lettuce/icon/zero_feature.png "Title")
     
