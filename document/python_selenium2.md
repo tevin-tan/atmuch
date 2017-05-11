@@ -1,6 +1,6 @@
 * [软件测试分类](#1)
-	- [测试阶段]
-	- [黑白盒测试]
+	- 测试阶段
+	- 黑白盒测试
 	- 功能、性能测试
 	- 手工、自动化
 	- 冒烟、回归等测试概念
@@ -304,4 +304,48 @@ webdriver操作cookie的方法：
 		
 - 关键字驱动测试
 
+
+<H1 id="BDD"><font color=blue>BDD框架之Lettuce入门</font></H1>
+
+## 什么是BDD ##
+
+1）TDD:测试驱动开发（Test-Driven Development)
+
+TDD是敏捷开发中的一项核心实践和技术，TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码确定需要编写什么产品代码。
+TDD的基本思路就是通过测试来推动整个开发的进行，但测试驱动开发并不只是单纯的测试工作，而是吧需求分析、设计和质量控制量化的过程。
+
+2）ATDD： 验收测试驱动开发（Acceptance Test Driven Development)
+
+验收测试驱动开发是一种实践，在准备实施一个功能或特性之前，团队首先需要定义出期望的质量标准和验收细则，以明确且达成共识的验收测试
+计划来驱动开发人员的功能开发实现和测试人员的测试脚本开发。
+
+3）BDD: 行为驱动开发（Behavior Driven Development)
+
+行为驱动开发是一种敏捷软件开发技术，它鼓励软件项目中的开发者，QA、非技术人员或商业参与者之间的协作。**<font color=green>主要是从用户的需求出发，强调系统行为。</font>**
+
+不同语言下的BDD框架
+
+	Cucumber(Ruby)		https://cucumber.io
+	Jdave(Java)			http://jdave.org
+	Behat(PHP)			http://docs.behat.org/en/v2.5
+	Behave(PYthon)		http://pythonhosted.org/behave
+	Lettuce(Python)		http://Lettue.it
+
+**Lettuce**
+   Lettuce 使开发和测试过程变得很容易，它有很好的可扩展行、可靠性、它允许我们用自然语言去描述一个系统的行为，
+
+- 描述的行为
+- 用Python定义步骤
+- 运行并观看它失败
+- 编写代码以使其通过
+
+语法：
+-----------------------------	
+	Feature(功能）	 ----> test suite(测试用力集)
+	Scenario(情景）   -----> test case（测试用例）
+	Given(给定）      ------> （测试步骤)
+	And(和)			 -------> 
+	when(当)			 -------> test run(触发测试执行)
+	Then(则）		 -------> assert(断言，验证结果)
+----------------------------
 
