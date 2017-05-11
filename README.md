@@ -1,8 +1,8 @@
+
 # AutoCode
 Automated learning induction
 
-- [python学习](document/为什么要学python.md  "python")
-  ## 什么是BDD ##
+<h1>测试技术 <h1>
 
   1）**TDD:测试驱动开发**（Test-Driven Development)
 
@@ -17,7 +17,19 @@ Automated learning induction
 
   行为驱动开发是一种敏捷软件开发技术，它鼓励软件项目中的开发者，QA、非技术人员或商业参与者之间的协作。**<font color=blue>主要是从用户的需求出发，强调系统行为。</font>**
 
+* **[selenium 主要用于web 应用程序的自动化测试]()**
 
+# selenium 的特点如下 #
+- 开源，免费
+- 多浏览器支持：Firefox, Chrome、IE、Opera、Edge
+- 多平台支持： Linux, Windows, MAC
+- 多语言支持：Java, Python, Ruby, C#, JavaScript, C++
+- 对web页面有良好的支持
+- 简单（API简单）、灵活（用开发语言驱动）
+- 支持分布式测试用例执行
+
+
+- [python学习](document/为什么要学python.md  "python")
 - [selenium特点](document/selenium特点.md  "selenium特点")
 - [试讲](document/试讲.pptx  "试讲")
 - [Automation](document/自动化测试基础.md  "Auto") 
