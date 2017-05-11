@@ -31,13 +31,13 @@ z- And(和)
 
 ## Lettuce 关键字的含义与unittest 中概念的对比 ##
 -------------------------------------------------
-	Lettuce								unittest
-	Feature(功能）	 -------> 			test suite(测试用力集)
-	Scenario(情景）   -------> 		test case（测试用例）
-	Given(给定）      -------> 		setup（测试步骤)
+	Lettuce						unittest
+	Feature(功能）	 -------> 	test suite(测试用力集)
+	Scenario(情景）   -------> 	test case（测试用例）
+	Given(给定）      -------> 	setup（测试步骤)
 	And(和)			 -------> 
-	when(当)			 -------> 		 test run(触发测试执行)
-	Then(则）		 -------> 			assert(断言，验证结果)
+	when(当)			 -------> 	test run(触发测试执行)
+	Then(则）		 -------> 	assert(断言，验证结果)
 
 
 
@@ -70,6 +70,41 @@ zero.feature
      When I have the number 2
      Then I see the number 2
     
+基本实现：
 
-![alt text](/Lettuce/icon/zero_feature.png "Title")
-    
+zero.feature
+	
+![alt text](/Lettuce/icon/zero_feature.png "feature")
+  
+steps.py
+  
+	from lettuce import *
+		
+	@step('I have the number (\d+)')
+	def have_the_number(step, number):
+		world.number = int(number)
+	
+	
+	@step('I compute its factorial')
+	def compute_its_fatorial(step):
+		world.number = factorial(world.number)
+	
+	
+	@step('I see the number (\d+)')
+	def check_number(step, expected):
+		expected = int(expected)
+		assert world.number == expected, "Got %d" % world.number
+	
+	
+	def factorial(number):
+		number = int(number)
+		if (number == 0) or (number == 1):
+			return 1
+		else:
+			return number
+
+
+测试结果：
+
+![alt text](/Lettuce/icon/result.png "feature")
+
