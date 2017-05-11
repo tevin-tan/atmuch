@@ -73,4 +73,3 @@ zero.feature
 
 ![alt text](/Lettuce/icon/zero_feature.png "Title")
     
->>>>>>> origin/master
