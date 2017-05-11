@@ -71,5 +71,5 @@ zero.feature
      Then I see the number 2
     
 
-![alt text](atmuch/Lettuce/iconlettuce_feature.jpg "Title")
+![alt text](atmuch/Lettuce/iconlettuce_feature.png "Title")
     
