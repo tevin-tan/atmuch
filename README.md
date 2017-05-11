@@ -1,6 +1,5 @@
 
-# AutoCode
-Automated learning induction
+# Automation
 
 <h1>测试技术 </h1>
 
@@ -16,8 +15,6 @@ Automated learning induction
   3）**BDD: 行为驱动开发**（Behavior Driven Development)
 
   行为驱动开发是一种敏捷软件开发技术，它鼓励软件项目中的开发者，QA、非技术人员或商业参与者之间的协作。**<font color=blue>主要是从用户的需求出发，强调系统行为。</font>**
-
-* **[selenium 主要用于web 应用程序的自动化测试]()**
 
 # selenium 的特点如下 #
 - 开源，免费
