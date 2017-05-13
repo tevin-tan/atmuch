@@ -72,6 +72,16 @@ zero.feature
     
 基本实现：
 
+Lettuce 目录结构与执行过程
+   BDD开发主要与两类文件打交道： Feature文件和相应的Step文件。 Feature 文件是以feature 为后缀名的文件，
+以Given-When-Then的方式描述了系统的场景（scenarios) 行为： Step 文件为普通的 Python 程序文件， Feature
+文件中的每一个Given-When-Then步骤在Step 文件中都有对应的 Python 执行代码，两类文件通过正则表达式相关联。
+  
+   另外需要注意的是，**<font color=blue> Feature 文件一定要在features 目录下</font>**， 否则会提示“Could not find features at\features"，
+而 Step 文件可放在任意目录下都能被执行到。
+
+	
+阶乘的例子：
 zero.feature
 	
 ![alt text](/Lettuce/icon/zero_feature.png "feature")
