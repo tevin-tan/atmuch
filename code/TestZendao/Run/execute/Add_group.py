@@ -6,11 +6,10 @@
     date:  2015-11-15   
 '''
 
-from  LoginZendao import login
-from  AddGroup import add_group
 import time
 
-
+from  AddGroup import add_group
+from  LoginZendao import login
 
 if __name__ == "__main__":
     

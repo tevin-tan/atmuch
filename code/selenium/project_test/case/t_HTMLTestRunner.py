@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import HTMLTestRunner
 import StringIO
 import sys
 import unittest
-
-import HTMLTestRunner
 
 
 # ----------------------------------------------------------------------

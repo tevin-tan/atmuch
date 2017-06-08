@@ -1,6 +1,6 @@
 # coding:utf-8
-from time import sleep, ctime
 import threading
+from time import sleep, ctime
 
 
 # 创建超级播放器

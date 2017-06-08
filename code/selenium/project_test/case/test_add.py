@@ -2,6 +2,7 @@ import unittest
 
 from calculator import Count
 
+
 class TestAdd(unittest.TestCase):
 
 	def setUp(self):

@@ -1,7 +1,10 @@
 # coding:utf-8
-from selenium import webdriver
-import unittest
 import time
+import unittest
+
+from selenium import webdriver
+
+
 # import sys
 # reload(sys)
 # sys.setdefaultencoding('utf-8')

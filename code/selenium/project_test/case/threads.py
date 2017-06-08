@@ -1,7 +1,7 @@
 # coding:utf-8
 
-from time import sleep, ctime
 import threading
+from time import sleep, ctime
 
 
 # 音乐播放器

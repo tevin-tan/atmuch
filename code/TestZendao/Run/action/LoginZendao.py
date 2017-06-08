@@ -1,6 +1,5 @@
+import locator
 from selenium import webdriver
-import locator 
-import traceback
 
 
 class login():

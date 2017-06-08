@@ -7,11 +7,10 @@
 '''
 
 
-from  LoginZendao import login
-from  CreateProduct import create_product
 import time
 
-
+from  CreateProduct import create_product
+from  LoginZendao import login
 
 if __name__ == "__main__":
     
