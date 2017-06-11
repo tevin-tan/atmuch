@@ -1,11 +1,12 @@
 # coding:utf-8
 import unittest
+import sys
+
 from cases import zendaologin
 from cases import create_programe
 from HTMLTestRunner import HTMLTestRunner
 import os
 import time
-import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')

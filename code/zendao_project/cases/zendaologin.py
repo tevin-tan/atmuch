@@ -2,7 +2,7 @@
 
 from selenium import webdriver
 import logging
-from config.locatar import locate, authentication
+from config.locator import locate, authentication
 import unittest
 import time
 import os
@@ -25,7 +25,6 @@ class TestLogin(unittest.TestCase):
 	def setUp(self):
 		print("Test Case Start")
 		self.log = model.logger_init()
-
 		self.driver = model.browser()
 		self.driver.implicitly_wait(30)
 		self.base_url = "http://127.0.0.1:81"
@@ -58,37 +57,15 @@ class TestLogin(unittest.TestCase):
 	def type_submit(self, loc):
 		self.driver.find_element_by_xpath(loc).click()
 
-	# def skipTest(self, reason):
-	# 	"""Skip this test."""
-	# 	raise self.skipTest(reason)
-
 	def is_login_sucess(self):
 		u'''判断是否获取到登录账户名称'''
 		try:
 			c_url = self.driver.current_url
-			if c_url == "http://127.0.0.1:81/zentao/my.html":
+			print("current_url" + c_url)
+			if c_url == "http://127.0.0.1:81/zentao/my/":
 				return True
 		except:
 			return False
-
-	# case 1: login success!
-	def test_login_01_success(self):
-		'''用户名密码正确登录成功'''
-		self.open(self.base_url + "/zentao/user-login-L3plbnRhby9teS5odG1s.html")
-		# try:
-		self.type_username(locate["username"], authentication["name"])
-		self.type_password(locate["password"], authentication["password"])
-		self.type_submit(locate["login_button"])
-		print(self.driver.title)
-
-		time.sleep(3)
-		# 判断结果
-		result = self.is_login_sucess()
-		self.assertTrue(result)
-		if result:
-			print(u'[TestCase]登录成功, 用例执行成功')
-		else:
-			print(u'[TestCase]用例执行失败')
 
 	def get_alert_present(self):
 		'''获取登录弹窗登录错误提示'''
@@ -99,7 +76,40 @@ class TestLogin(unittest.TestCase):
 			print("登录失败错误提示信息:" + alert_text)
 			self.assertIn(self.error_text, alert_text, "(%s) not found in (%s)" % (self.error_text, alert_text))
 
+	'''
+		case1: test_login_success
+		测试步骤：
+		1. 登录禅道登录页面，输入用户名admin, 密码123456
+		预期输出：
+		1. 登录成功，页面跳转成功
+	'''
+
+	def test_login_01_success(self):
+		'''用户名密码正确登录成功'''
+		self.open(self.base_url + "/zentao/user-login.html")
+		self.type_username(locate["username"], authentication["name"])
+		self.type_password(locate["password"], authentication["password"])
+		self.type_submit(locate["login_button"])
+		print(self.driver.title)
+
+		time.sleep(2)
+		# 判断结果
+		result = self.is_login_sucess()
+		self.assertTrue(result)
+		if result:
+			print(u'[TestCase]登录成功, 用例执行成功')
+		else:
+			print(u'[TestCase]用例执行失败')
+
 	# case 2: login with error name or password
+	'''
+		case2 : test_login_error_name
+		测试步骤：
+		1. 登录禅道登录页面，输入用户名错误
+		预期结果：
+		1. 登录失败，出现弹框，显示“登录失败，请检查您的用户名或密码是否填写正确。”
+	'''
+
 	def test_login_02_error_name(self):
 		'''用户名错误，登录失败'''
 		browser = self.driver
@@ -130,7 +140,7 @@ class TestLogin(unittest.TestCase):
 		print("alert_text:" + alert_text)
 		time.sleep(2)
 		self.writeLog(browser)
-		alert.accept() 
+		alert.accept()
 		'''
 
 		# 字符串查找
@@ -146,7 +156,7 @@ class TestLogin(unittest.TestCase):
 		if alert_text == "登录失败，请检查您的用户名或密码是否填写正确。":
 			print("登录失败，校验成功")
 		else:
-			print("校验失败") 
+			print("校验失败")
 		'''
 
 		# 利用正则表达式匹配
@@ -158,6 +168,14 @@ class TestLogin(unittest.TestCase):
 		else:
 			self.log.ERROR("case run error")
 		'''
+
+	'''
+		case3 : test_login_error_password
+		测试步骤：
+		1. 登录禅道登录页面，输入密码错误
+		预期结果：
+		1. 登录失败，出现弹框，显示“登录失败，请检查您的用户名或密码是否填写正确。”
+	'''
 
 	def test_login_03_error_password(self):
 		'''密码错误，登录失败'''
@@ -187,6 +205,14 @@ class TestLogin(unittest.TestCase):
 		#     logging.error(e)
 		#     return False
 
+	'''
+		case4 : test_login_name_empty
+		测试步骤：
+		1. 登录禅道登录页面，输入用户名为空，点击登录
+		预期结果：
+		1. 登录失败，出现弹框，显示“登录失败，请检查您的用户名或密码是否填写正确。”
+	'''
+
 	def test_login_04_name_empty(self):
 		'''用户名为空，登录失败'''
 		browser = self.driver
@@ -212,6 +238,14 @@ class TestLogin(unittest.TestCase):
 		except Exception as e:
 			logging.error(e)
 
+	'''
+		case5 : test_login_password_empty
+		测试步骤：
+		1. 登录禅道登录页面，输入密码为空，点击登录
+		预期结果：
+		1. 登录失败，出现弹框，显示“登录失败，请检查您的用户名或密码是否填写正确。”
+	'''
+
 	def test_login_05_password_empty(self):
 		'''密码为空，登录失败'''
 		browser = self.driver
@@ -236,6 +270,14 @@ class TestLogin(unittest.TestCase):
 		else:
 			print("校验失败")
 			raise ValueError("密码为空，登录失败")
+
+	'''
+		case6: test_login_empty
+		测试步骤：
+		1. 登录禅道登录页面，用户名及密码输入都为空，点击登录
+		预期结果：
+		1. 登录失败，出现弹框，显示“登录失败，请检查您的用户名或密码是否填写正确。”
+	'''
 
 	def test_login_06_many_times(self):
 		'''连续登录3次'''
