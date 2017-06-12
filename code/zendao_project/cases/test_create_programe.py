@@ -73,7 +73,7 @@ class Create_program(unittest.TestCase):
 	'''
 
 	def test_create_program_01(self):
-		u'''创建一个项目'''
+		u'''创建一个项目，并删除项目'''
 		print(u'创建项目')
 
 		prj_name = self.config['pro_name']
