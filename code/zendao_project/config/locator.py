@@ -50,3 +50,24 @@ locate = dict(
 	access_wihte_name=".//*[@id='aclcustom']",  # 自定义白名单
 	save=".//*[@id='submit']",  # 保存
 )
+
+PO_locate = dict(
+	product=".//*[@id='menuproduct']",  # 产品tab
+	currentItem=".//*[@id='currentItem']/span",  # 搜索当前产品
+	serachItem=".//*[@id='search']",  # 输入文本
+	Item=".//*[@id='searchResult']/div/ul/li/a",  # 查找结果
+	all_product=".//*[@id='submenuall']", # 所有产品
+	delete_product=".//*[@id='titlebar']/div[2]/div/a[2]/i", # 删除产品
+
+	name=".//*[@id='name']",  # 产品name
+	code=".//*[@id='code']",  # 产品code
+	PO_chosen=".//*[@id='PO_chosen']/a",  # 产品负责人
+	PO_owner=".//*[@id='PO_chosen']/div/ul/li",  # 选择产品负责人
+	QD_chosen=".//*[@id='QD_chosen']/a",  # 测试负责人下拉按钮
+	test_owner=".//*[@id='QD_chosen']/div/ul/li",  # 选择测试负责人
+	RD_chosen=".//*[@id='RD_chosen']/a",  # 产品负责人
+	select_RD_chosen=".//*[@id='RD_chosen']/div/ul/li",  # 选择产品负责人
+	product_des="",  # 产品描述
+	access_private=".//*[@id='aclprivate']",  # 访问控制
+	save=".//*[@id='submit']",  # 保存
+)

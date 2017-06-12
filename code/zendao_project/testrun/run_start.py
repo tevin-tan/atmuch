@@ -2,8 +2,10 @@
 import unittest
 import sys
 
+import cases
 from cases import zendaologin
 from cases import create_programe
+from cases import test_create_product
 from HTMLTestRunner import HTMLTestRunner
 import os
 import time
@@ -19,9 +21,10 @@ class RunTestSuite(object):
 	def Add_test_case_run(self):
 		# 创建项目测试用例添加到测试套
 		'''方法三'''
-		suite1 = unittest.TestLoader().loadTestsFromTestCase(zendaologin.TestLogin)
-		suite2 = unittest.TestLoader().loadTestsFromTestCase(create_programe.Create_program)
-		test_suite = [suite1, suite2]
+		suite1 = unittest.TestLoader().loadTestsFromTestCase(cases.zendaologin.TestLogin)
+		suite2 = unittest.TestLoader().loadTestsFromTestCase(cases.create_programe.Create_program)
+		suite3 = unittest.TestLoader().loadTestsFromTestCase(cases.test_create_product.Create_product)
+		test_suite = [suite1, suite2, suite3]
 		suite = unittest.TestSuite(test_suite)
 
 		return suite
