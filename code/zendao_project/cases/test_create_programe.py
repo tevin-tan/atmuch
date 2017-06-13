@@ -49,16 +49,17 @@ class Create_program(unittest.TestCase):
 		e2 = self.lg.driver.find_element_by_xpath(locator.locate["search_project_list"])  # 输入搜索文本
 		e2.send_keys(name)
 		time.sleep(1)
-		e3 = self.lg.driver.find_element_by_xpath(locator.locate["search_project_result"])  # 匹配结果
-		if e3.text == name:  # 判断是否找到项目
-			self.lg.driver.find_element_by_xpath(locator.locate["delete_project"]).click()  # 删除项目
-			if self.lg.is_alert_present():
-				print("点击确认!")
-				time.sleep(2)
-				res = self.lg.close_alert_and_get_its_text()
-				model.logger_init().info("res:" + res)
-		else:
-			print("not found element!")
+		if self.lg.is_element_present("xpath", locator.locate["search_project_result"]):
+			e3 = self.lg.driver.find_element_by_xpath(locator.locate["search_project_result"])  # 匹配结果
+			if e3.text == name:  # 判断是否找到项目
+				self.lg.driver.find_element_by_xpath(locator.locate["delete_project"]).click()  # 删除项目
+				if self.lg.is_alert_present():
+					print("点击确认!")
+					time.sleep(2)
+					res = self.lg.close_alert_and_get_its_text()
+					model.logger_init().info("res:" + res)
+			else:
+				print("not found element!")
 
 	'''
 		Case01: test_create_program_01
@@ -73,7 +74,7 @@ class Create_program(unittest.TestCase):
 	'''
 
 	def test_create_program_01(self):
-		u'''创建一个项目，并删除项目'''
+		u'''创建一个私有，维护项目，并删除项目'''
 		print(u'创建项目')
 
 		prj_name = self.config['pro_name']
@@ -120,6 +121,76 @@ class Create_program(unittest.TestCase):
 
 	# # 创建项目
 	# self.create_an_project(prj_name, prj_code, date_start, date_end, awd, team_name, prj_type, prj_des, prj_access)
+
+	def test_create_program_02(self):
+		u'''创建一个默认，短期项目, 关联产品'''
+		product_name = "ZoneDirector"
+		conf = {
+			'pro_name': '9.16_zonedirector_test',
+			'pro_code': 'odc-0001',
+			'date_start': '2015-11-14',
+			'date_end': '2015-11-30',
+			'available_work_days': '16',
+			'team_name': 'automation',
+			'pro_type': 'sprint',
+			'pro_des': "hello automation, congratulation to your",
+			'pro_access': 'access_private',
+		}
+
+		prj_name = conf['pro_name']
+		prj_code = conf['pro_code']
+		date_start = conf['date_start']
+		date_end = conf['date_end']
+		awd = conf['available_work_days']
+		team_name = conf['team_name']
+		prj_type = conf['pro_type']
+		prj_des = conf['pro_des']
+		prj_access = conf['pro_access']
+
+		self.delete_project_if_exist(prj_name)  # 查找当前项目是否已经存在，若存在则先删除，再创建
+		self.lg.driver.refresh()
+		# step 1 切换项目页
+		self.select_project()
+		# step 2 输入项目名称
+		time.sleep(1)
+		self.type_project_name(prj_name)
+		# step 3  输入项目的code
+		time.sleep(1)
+		self.type_project_code(prj_code)
+		# step 4  输入起始及截止日期
+		time.sleep(1)
+		self.type_date(date_start, date_end)
+		# step 5    输入可用工作日
+		time.sleep(1)
+		self.type_available_day(awd)
+		# step 6  输入团队名称
+		time.sleep(1)
+		self.type_team_name(team_name)
+		# step 7 选择项目类型
+		time.sleep(1)
+		self.select_project_type(prj_type)
+		# step 8 填写项目描述
+		time.sleep(1)
+		self.type_project_description(prj_des)
+		# step 9 选择访问类型
+		time.sleep(1)
+		self.select_access_option(prj_access)
+
+		# 关联产品
+		if self.lg.is_element_present("xpath", ".//*[@id='products_chosen']/ul"):
+			self.lg.driver.find_element_by_xpath(".//*[@id='products_chosen']/ul").send_keys(product_name)
+			for i in range(1, 10):
+				xp = ".//*[@id='products_chosen']/div/ul/li[" + str(i) + "]"
+				if self.lg.is_element_present("xpath", xp):
+					if self.lg.driver.find_element_by_xpath(xp).text == product_name:
+						self.lg.driver.find_element_by_xpath(xp).click()
+						break
+				else:
+					continue
+
+		# step 10 保存项目
+		time.sleep(1)
+		self.save_project()
 
 	def select_project(self):
 		'''切换到创建项目页面'''
