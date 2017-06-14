@@ -9,7 +9,7 @@ from common import model
 
 
 class Create_program(unittest.TestCase):
-	u'''创建项目'''
+	u'''项目测试'''
 
 	def init_parameters(self):
 		conf = {
@@ -122,12 +122,24 @@ class Create_program(unittest.TestCase):
 	# # 创建项目
 	# self.create_an_project(prj_name, prj_code, date_start, date_end, awd, team_name, prj_type, prj_des, prj_access)
 
+	'''
+		Case2: test_create_program_02
+		name: 创建创建一个默认，短期项目, 并关联产品
+		step:
+			1. 创建项目，项目名称为9.14_zonedirector_test
+			2. 查看项目是否已经存在，如果存在则先删除
+			3. 项目代号为"odc-0007", 起始日期：2015-11-14， 截止日期：2015-11-30， 可用工作日：16， 项目团队：automation，项目类型为：运维项目，
+			访问控制为：私人项目
+			4. 保存项目
+			5. 查看项目是否创建成功
+	'''
+
 	def test_create_program_02(self):
 		u'''创建一个默认，短期项目, 关联产品'''
 		product_name = "ZoneDirector"
 		conf = {
-			'pro_name': '9.16_zonedirector_test',
-			'pro_code': 'odc-0001',
+			'pro_name': '9.17_zonedirector_test',
+			'pro_code': 'odc-0003',
 			'date_start': '2015-11-14',
 			'date_end': '2015-11-30',
 			'available_work_days': '16',
@@ -177,20 +189,64 @@ class Create_program(unittest.TestCase):
 		self.select_access_option(prj_access)
 
 		# 关联产品
+		# import pdb
+		# pdb.set_trace()
 		if self.lg.is_element_present("xpath", ".//*[@id='products_chosen']/ul"):
-			self.lg.driver.find_element_by_xpath(".//*[@id='products_chosen']/ul").send_keys(product_name)
+			el = self.lg.driver.find_element_by_xpath(".//*[@id='products_chosen']/ul")
+			el.click()
+			time.sleep(1)
+			el.send_keys(product_name)
+			time.sleep(1)
 			for i in range(1, 10):
 				xp = ".//*[@id='products_chosen']/div/ul/li[" + str(i) + "]"
 				if self.lg.is_element_present("xpath", xp):
 					if self.lg.driver.find_element_by_xpath(xp).text == product_name:
+						time.sleep(1)
 						self.lg.driver.find_element_by_xpath(xp).click()
 						break
 				else:
 					continue
+		else:
+			print("not found", u'关联产品')
 
 		# step 10 保存项目
 		time.sleep(1)
 		self.save_project()
+
+	def test_create_program_03(self):
+		'''查看所有项目'''
+		conf = dict(
+			submenuall=".//*[@id='submenuall']",
+			project=".//*[@id='menuproject']",
+		)
+
+		def is_element_action(xpath, how="xpath"):
+			'''确认“所有项目”元素是否可见'''
+			try:
+				self.lg.is_element_present(how, xpath)  # 所有项目
+				time.sleep(1)
+				self.lg.driver.find_element_by_xpath(xpath).click()
+				return True
+			except EC.NoSuchElementException as e:
+				raise e
+
+		is_element_action(conf['project'])  # step 1
+		is_element_action(conf["submenuall"])  # step 2
+
+		# step 3
+		for i in range(1, 100):
+			xpath = ".//*[@id='projectTableList']/tr[" + str(i) + "]/td[2]/a"
+			# print xpath
+			time.sleep(1)
+			if self.lg.is_element_present("xpath", xpath):
+				el = self.lg.driver.find_element_by_xpath(xpath).text
+				if el == "":
+					break
+				else:
+					print(u"项目" + el)
+					continue
+			else:
+				break
 
 	def select_project(self):
 		'''切换到创建项目页面'''
