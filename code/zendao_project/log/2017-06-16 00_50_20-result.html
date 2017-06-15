@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>测试报告</h1>
-<p class='attribute'><strong>Start Time:</strong> 2017-06-13 00:32:07</p>
-<p class='attribute'><strong>Duration:</strong> 0:01:44.008000</p>
-<p class='attribute'><strong>Status:</strong> Pass 8</p>
+<p class='attribute'><strong>Start Time:</strong> 2017-06-16 00:50:20</p>
+<p class='attribute'><strong>Duration:</strong> 0:04:30.172000</p>
+<p class='attribute'><strong>Status:</strong> Pass 14</p>
 
 <p class='description'>用例执行情况:</p>
 </div>
@@ -390,16 +390,16 @@ alert_text:登录失败，请检查您的用户名或密码是否填写正确。
 </tr>
 
 <tr class='passClass'>
-    <td>cases.test_create_programe.Create_program: 创建项目</td>
-    <td>1</td>
-    <td>1</td>
+    <td>cases.test_create_programe.Create_program: 项目测试</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c2',3)">Detail</a></td>
 </tr>
 
 <tr id='pt2.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_create_program_01: 创建一个项目，并删除项目</div></td>
+    <td class='none'><div class='testcase'>test_01_create_program: 创建一个私有，维护项目，并删除项目</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -416,7 +416,7 @@ alert_text:登录失败，请检查您的用户名或密码是否填写正确。
 pt2.1: ---create program case test start-----
 创建项目
 点击确认!
-Tue, 13 Jun 2017 00:33:06 test_create_programe.py[line:59] INFO res:您确定删除项目[9.14_zonedirector_test]吗？
+Fri, 16 Jun 2017 00:51:23 test_create_programe.py[line:60] INFO res:您确定删除项目[9.17_zonedirector_test]吗？
 Message: Unable to locate element: .//*[@id='projectbox']/div[2]/a[1]
 
 ---create program case test end-----
@@ -429,17 +429,75 @@ Message: Unable to locate element: .//*[@id='projectbox']/div[2]/a[1]
     </td>
 </tr>
 
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_create_program: 创建一个默认，短期项目, 关联产品</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: ---create program case test start-----
+Message: Unable to locate element: .//*[@id='projectbox']/div[2]/a[1]
+
+---create program case test end-----
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_show_project: 查看所有项目</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: ---create program case test start-----
+项目9.17_zonedirector_test
+项目9.15_zonedirector_test
+项目9.16_zonedirector_test
+项目9.14_zonedirector_test
+---create program case test end-----
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
 <tr class='passClass'>
     <td>cases.test_create_product.Create_product: 产品测试</td>
-    <td>2</td>
-    <td>2</td>
+    <td>6</td>
+    <td>6</td>
     <td>0</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c3',2)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c3',6)">Detail</a></td>
 </tr>
 
 <tr id='pt3.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_create_product_01: 创建产品</div></td>
+    <td class='none'><div class='testcase'>test_01_create_product: 创建产品</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -465,6 +523,7 @@ ZoneDirector
 .//*[@id='productTableList']/tr[7]/td[2]/a
 .//*[@id='productTableList']/tr[8]/td[2]/a
 .//*[@id='productTableList']/tr[9]/td[2]/a
+Fri, 16 Jun 2017 00:53:26 test_create_product.py[line:136] INFO 产品创建成功
 case end
 
 
@@ -476,7 +535,7 @@ case end
 </tr>
 
 <tr id='pt3.2' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_delete_product_02: 删除产品</div></td>
+    <td class='none'><div class='testcase'>test_02_delete_product: 删除产品</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -512,10 +571,128 @@ case end
     </td>
 </tr>
 
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_select_product: 查找产品</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+        pass</a>
+
+    <div id='div_pt3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.3: case start
+ZoneDirector
+Fri, 16 Jun 2017 00:53:54 test_create_product.py[line:94] INFO 产品已被找到
+case end
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_create_product_plan: 创建产品计划</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.4')" >
+        pass</a>
+
+    <div id='div_pt3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.4: case start
+ZoneDirector
+Fri, 16 Jun 2017 00:54:08 test_create_product.py[line:94] INFO 产品已被找到
+Fri, 16 Jun 2017 00:54:13 test_create_product.py[line:191] INFO 产品计划已经创建成功
+case end
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_create_product_palan_use_period: 产品计划设置周期</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.5')" >
+        pass</a>
+
+    <div id='div_pt3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.5: case start
+ZoneDirector
+Fri, 16 Jun 2017 00:54:27 test_create_product.py[line:94] INFO 产品已被找到
+res:2017-1-08
+7 days, 0:00:00
+Fri, 16 Jun 2017 00:54:31 test_create_product.py[line:242] INFO 计划周期设置为一星期
+Fri, 16 Jun 2017 00:54:32 test_create_product.py[line:247] INFO 产品计划已经创建成功
+case end
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_create_product_publish: 创建产品发布</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.6')" >
+        pass</a>
+
+    <div id='div_pt3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.6: case start
+ZoneDirector
+Fri, 16 Jun 2017 00:54:45 test_create_product.py[line:94] INFO 产品已被找到
+Fri, 16 Jun 2017 00:54:50 test_create_product.py[line:295] INFO 产品发布成功
+case end
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
 <tr id='total_row'>
     <td>Total</td>
-    <td>8</td>
-    <td>8</td>
+    <td>14</td>
+    <td>14</td>
     <td>0</td>
     <td>0</td>
     <td>&nbsp;</td>

@@ -62,7 +62,7 @@ class Create_program(unittest.TestCase):
 				print("not found element!")
 
 	'''
-		Case01: test_create_program_01
+		Case01: test_01_create_program
 		name: 创建项目
 		step:
 			1. 创建项目，项目名称为9.14_zonedirector_test
@@ -73,7 +73,7 @@ class Create_program(unittest.TestCase):
 			5. 查看项目是否创建成功
 	'''
 
-	def test_create_program_01(self):
+	def test_01_create_program(self):
 		u'''创建一个私有，维护项目，并删除项目'''
 		print(u'创建项目')
 
@@ -123,7 +123,7 @@ class Create_program(unittest.TestCase):
 	# self.create_an_project(prj_name, prj_code, date_start, date_end, awd, team_name, prj_type, prj_des, prj_access)
 
 	'''
-		Case2: test_create_program_02
+		Case2: test_02_create_program
 		name: 创建创建一个默认，短期项目, 并关联产品
 		step:
 			1. 创建项目，项目名称为9.14_zonedirector_test
@@ -134,7 +134,7 @@ class Create_program(unittest.TestCase):
 			5. 查看项目是否创建成功
 	'''
 
-	def test_create_program_02(self):
+	def test_02_create_program(self):
 		u'''创建一个默认，短期项目, 关联产品'''
 		product_name = "ZoneDirector"
 		conf = {
@@ -213,25 +213,34 @@ class Create_program(unittest.TestCase):
 		time.sleep(1)
 		self.save_project()
 
-	def test_create_program_03(self):
+	'''
+		Case: test_03_show_project
+		caseName: 查看所有项目
+		CaseStep:
+			1. 点击项目页
+			2. 找到所有项目按钮，点击所有项目
+			3. 查看并展示项目列表
+	'''
+
+	def test_03_show_project(self):
 		'''查看所有项目'''
 		conf = dict(
 			submenuall=".//*[@id='submenuall']",
 			project=".//*[@id='menuproject']",
 		)
 
-		def is_element_action(xpath, how="xpath"):
-			'''确认“所有项目”元素是否可见'''
-			try:
-				self.lg.is_element_present(how, xpath)  # 所有项目
-				time.sleep(1)
-				self.lg.driver.find_element_by_xpath(xpath).click()
-				return True
-			except EC.NoSuchElementException as e:
-				raise e
+		# def is_element_action(xpath, how="xpath"):
+		# 	'''确认“所有项目”元素是否可见'''
+		# 	try:
+		# 		self.lg.is_element_present(how, xpath)  # 所有项目
+		# 		time.sleep(1)
+		# 		self.lg.driver.find_element_by_xpath(xpath).click()
+		# 		return True
+		# 	except EC.NoSuchElementException as e:
+		# 		raise e
 
-		is_element_action(conf['project'])  # step 1
-		is_element_action(conf["submenuall"])  # step 2
+		self.is_element_action(conf['project'])  # step 1
+		self.is_element_action(conf["submenuall"])  # step 2
 
 		# step 3
 		for i in range(1, 100):
@@ -247,6 +256,16 @@ class Create_program(unittest.TestCase):
 					continue
 			else:
 				break
+
+	def is_element_action(self, xpath, how="xpath"):
+		'''确认“所有项目”元素是否可见'''
+		try:
+			self.lg.is_element_present(how, xpath)  # 所有项目
+			time.sleep(1)
+			self.lg.driver.find_element_by_xpath(xpath).click()
+			return True
+		except EC.NoSuchElementException as e:
+			raise e
 
 	def select_project(self):
 		'''切换到创建项目页面'''
